@@ -122,10 +122,3 @@ ON student.advisor_id = instructor.id;
 SELECT * 
 FROM student  LEFT JOIN  instructor
 ON student.advisor_id = instructor.id;
-
-
-CREATE TABLE Products(
-   product_id INTEGER PRIMARY KEY,
-   low_fats ENUM('Y','N'),
-   recyclable ENUM('Y','N')
-);
