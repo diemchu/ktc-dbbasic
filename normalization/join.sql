@@ -122,3 +122,25 @@ ON student.advisor_id = instructor.id;
 SELECT * 
 FROM student  LEFT JOIN  instructor
 ON student.advisor_id = instructor.id;
+
+--학생별로 수강하고 있는 과목
+SELECT student.id,student  .first_name as 'student name' , lecture.id as '과목번호' ,lecture.name '과목 이름'
+FROM student LEFT OUTER JOIN enrolling_lectures 
+ON (student.id = enrolling_lectures.student_id)
+LEFT OUTER JOIN lecture  ON enrolling_lectures.lecture_id = lecture.id
+WHERE lecture.id is NULL
+ORDER BY student.id;
+
+
+--각 강의 당 듣고 있는 학생 수
+SELECT  l.id ,l.name,count(*) c
+FROM lecture l join enrolling_lectures e 
+on l.id = e.lecture_id JOIN student s on  s.id = e.student_id
+GROUP by l.id
+ORDER by c;
+
+
+-- 2번 강의를 듣고 있는 학생들의 ID를 가져온다 
+SELECT first_name ,last_name
+FROM student s  join enrolling_lectures e 
+ON s.id = e.student_id WHERE lecture_id = 2; 
