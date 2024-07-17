@@ -101,8 +101,8 @@ ORDER BY student.id;
 
 -- OUTER JOIN
 --OUTER JOIN trả về các hàng từ một hoặc cả hai bảng,
+--  ngay cả khi không có dòng nào khớp với điều kiện kết nối.
 
- ngay cả khi không có dòng nào khớp với điều kiện kết nối.
 SELECT lecture.id, name, day,first_name,last_name
 FROM lecture LEFT OUTER JOIN instructor 
 ON instructor.id = lecture.instructor_id;
